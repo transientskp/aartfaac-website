@@ -1,0 +1,27 @@
+db:
+    restart: always
+    image: postgres:9.5
+
+django:
+    restart: always
+    build: .
+    expose:
+        - 8000
+    links:
+        - db:db
+    volumes:
+        - .:/code
+    env_file: .env
+    command: /usr/local/bin/gunicorn website.wsgi:application -w 2 -b :8000
+
+nginx:
+    restart: always
+    image: nginx:1.11
+    volumes:
+        - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    volumes_from:
+        - django
+    links:
+        - django
+    ports:
+        - 80:80

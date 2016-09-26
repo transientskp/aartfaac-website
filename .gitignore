@@ -90,3 +90,7 @@ ENV/
 
 # django
 db.sqlite3
+.virtualenv
+.virtualenv2
+.virtualenv3
+

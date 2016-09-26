@@ -1,0 +1,4 @@
+aartfaac-arthur==0.1
+django>=1.10,<1.11
+gunicorn>=19.6,<19.7
+
