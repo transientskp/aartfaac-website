@@ -22,7 +22,7 @@ the first time you start this website you need to create the content of
 the database. you can do this with:
 ```
 $ docker-compose run django python ./manage.py migrate
-``
+```
 
 Next you need to initialise a super user:
 ```
