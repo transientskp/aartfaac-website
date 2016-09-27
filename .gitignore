@@ -93,4 +93,5 @@ db.sqlite3
 .virtualenv
 .virtualenv2
 .virtualenv3
+media/*.png
 

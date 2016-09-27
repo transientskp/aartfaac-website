@@ -1,0 +1,26 @@
+{%  extends 'base.html' %}
+{%  load static %}
+{%  block content %}
+
+    <div class="lofar">
+        <div class="container-fluid">
+            <div class="bs-docs-section">
+                <div class="page-header">
+
+                    <div class="col-lg-2 content">
+                        <div class="list-group table-of-contents">
+                            <a class="list-group-item" href="{% url 'overview' %}">overview</a>
+                            <a class="list-group-item" href="{% url 'list' %}">timestamp list</a>
+
+                        </div>
+                    </div>
+                    <div class="col-lg-10 content">
+                        {%  block monitoring %}
+                        {% endblock %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

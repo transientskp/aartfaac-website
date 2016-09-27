@@ -1,0 +1,12 @@
+{%  extends 'monitoring/base.html' %}
+{%  load static %}
+{%  block monitoring %}
+    <row>
+        <div class="col-lg-4"><img class="monitoring" src="{% get_media_prefix %}S299_R01-63_T{{ timestamp }}_image.png"></div>
+        <div class="col-lg-4"><img class="monitoring" src="{% get_media_prefix %}S299_R01-63_T{{ timestamp }}_corr.png"></div>
+        <div class="col-lg-4"><img class="monitoring" src="{% get_media_prefix %}S299_R01-63_T{{ timestamp }}_diff.png"></div>
+        <div class="col-lg-4"><img class="monitoring" src="{% get_media_prefix %}S299_R01-63_T{{ timestamp }}_chan.png"></div>
+        <div class="col-lg-4"><img class="monitoring" src="{% get_media_prefix %}S299_R01-63_T{{ timestamp }}_lag.png"></div>
+    </row>
+
+{% endblock %}

@@ -1,15 +1,23 @@
 from django.conf.urls import url
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, RedirectView
 
-
-urlpatterns = [
-    url(r'^$', TemplateView.as_view(template_name="pages/index.html"), name='index'),
-    url(r'^about/$', TemplateView.as_view(template_name="pages/about.html"), name='about'),
-    url(r'^live/$', TemplateView.as_view(template_name="pages/live.html"), name='live'),
-    url(r'^team/$', TemplateView.as_view(template_name="pages/team.html"), name='team'),
-    url(r'^jobs/$', TemplateView.as_view(template_name="pages/jobs.html"), name='jobs'),
-    url(r'^collab/$', TemplateView.as_view(template_name="pages/collab.html"), name='collab'),
-    url(r'^related/$', TemplateView.as_view(template_name="pages/related.html"), name='related'),
-    url(r'^contact/$', TemplateView.as_view(template_name="pages/contact.html"), name='contact'),
-    url(r'^publications/$', TemplateView.as_view(template_name="pages/publications.html"), name='publications'),
+template_pages = [
+    'start',
+    'about',
+    'live',
+    'team',
+    'jobs',
+    'collab',
+    'related',
+    'contact',
+    'publications',
 ]
+
+
+def make_url(page):
+    return url(r'^{}$'.format(page),
+               TemplateView.as_view(template_name="pages/{}.html".format(page)),
+               name=page)
+
+urlpatterns = [make_url(i) for i in template_pages]
+urlpatterns += [url(r'^$', RedirectView.as_view(pattern_name='start'))]
