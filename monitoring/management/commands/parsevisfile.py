@@ -49,9 +49,11 @@ class Command(BaseCommand):
                     args = {'band': BAND_LABEL,
                             'timestamp': timestamp,
                             'figure': name}
-                    filename = path.join(settings.MEDIA_ROOT,
-                                         filename_template.format(**args))
-                    figure.savefig(filename)  # pad_inches=0, bbox_inches='tight')
+                    filename = filename_template.format(**args)
+                    full_filename = path.join(settings.MEDIA_ROOT,
+                                              filename)
+                    print('writing {}'.format(filename))
+                    figure.savefig(full_filename)  # pad_inches=0, bbox_inches='tight')
 
                     # symlink to latest version
                     link_target = path.join(settings.MEDIA_ROOT, name + '.png')
