@@ -12,7 +12,7 @@ filename_template = "S{band}_R01-63_{timestamp}_{figure}.png"
 
 
 class Command(BaseCommand):
-    help = 'Open visibilities file and generate images in static store'
+    help = 'Open visibilities file and generate images in media store'
 
     def add_arguments(self, parser):
         parser.add_argument('vis_file', nargs='+', type=str)
