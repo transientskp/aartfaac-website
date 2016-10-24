@@ -24,4 +24,4 @@ nginx:
     links:
         - django
     ports:
-        - 80:80
+        - ${PORT}:80
