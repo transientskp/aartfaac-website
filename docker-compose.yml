@@ -1,14 +1,8 @@
-db:
-    restart: always
-    image: postgres:9.5
-
 django:
     restart: always
     build: .
     expose:
         - 8000
-    links:
-        - db:db
     volumes:
         - .:/code
     env_file: .env

@@ -21,12 +21,12 @@ website.
 the first time you start this website you need to create the content of
 the database. you can do this with:
 ```
-$ docker-compose run django python ./manage.py migrate
+$ docker-compose run django python ./manage.py migrate --settings website.settings.ais001
 ```
 
 Next you need to initialise a super user:
 ```
-$ docker-compose run django python ./manage.py createsuperuser
+$ docker-compose run django python ./manage.py createsuperuser --settings website.settings.ais001
 Username (leave blank to use 'root'):
 ```
 
