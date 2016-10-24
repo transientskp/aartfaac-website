@@ -2,11 +2,37 @@
 {%  load static %}
 {%  block monitoring %}
     <row>
-        <div class="col-lg-4 col-md-6"><img class="monitoring" src="{% get_media_prefix %}image.png"></div>
-        <div class="col-lg-4 col-md-6"><img class="monitoring" src="{% get_media_prefix %}corr.png"></div>
-        <div class="col-lg-4 col-md-6"><img class="monitoring" src="{% get_media_prefix %}diff.png"></div>
-        <div class="col-lg-4 col-md-6"><img class="monitoring" src="{% get_media_prefix %}chan.png"></div>
-        <div class="col-lg-4 col-md-6"><img class="monitoring" src="{% get_media_prefix %}lag.png"></div>
+        <div class="col-lg-4 col-md-6"><img class="monitoring" src="{% get_media_prefix %}image.png" id="image"></div>
+        <div class="col-lg-4 col-md-6"><img class="monitoring" src="{% get_media_prefix %}corr.png" id="corr"></div>
+        <div class="col-lg-4 col-md-6"><img class="monitoring" src="{% get_media_prefix %}diff.png" id="diff"></div>
+        <div class="col-lg-4 col-md-6"><img class="monitoring" src="{% get_media_prefix %}chan.png" id="chan"></div>
+        <div class="col-lg-4 col-md-6"><img class="monitoring" src="{% get_media_prefix %}lag.png" id="lag"></div>
     </row>
+    <script>
+        function autoReloadImage( id, timeout )
+        {
+            var img = document.getElementById(id);
+            timeout *= 1000;
+            setTimeout(function()
+            {
+                reloadImage( img, img.src, timeout )
+            }, timeout);
+        }
+        function reloadImage( img, src, timeout )
+        {
+            img.src = src + "?" + new Date().getTime();
+            setTimeout(function()
+            {
+                reloadImage( img, src, timeout )
+            }, timeout);
+        }
 
+        autoReloadImage("image", 2);
+        autoReloadImage("corr", 2);
+        autoReloadImage("diff", 2);
+        autoReloadImage("chan", 2);
+        autoReloadImage("lag", 2);
+
+
+    </script>
 {% endblock %}
