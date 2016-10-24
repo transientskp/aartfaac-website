@@ -39,7 +39,17 @@
                 <li><a href="{% url 'contact' %}"><span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span> Contact</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="monitoring"><span class="glyphicon glyphicon-dashboard" aria-hidden="true"></span> monitoring</a></li>
+                {% if user.is_staff %}
+                    <li><a href="{% url 'admin:index' %}"><span class="glyphicon glyphicon-tower" aria-hidden="true"></span> admin</a></li>
+                {%  endif %}
+
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'overview' %}"><span class="glyphicon glyphicon-dashboard" aria-hidden="true"></span> monitoring</a></li>
+                    <li><a href="{% url 'overview' %}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> logged in as {{ user.username }}</a></li>
+                    <li><a href="{% url 'logout' %}"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> Log out</a></li>
+                {% else %}
+                    <li><a href="{% url 'login' %}"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> Log in</a></li>
+                {% endif %}
             </ul>
 
         </div>
