@@ -11,6 +11,7 @@ template_pages = [
     'related',
     'contact',
     'publications',
+    'brainstorm',
 ]
 
 
