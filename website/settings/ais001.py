@@ -4,8 +4,6 @@ from website.settings import *
 USE_X_FORWARDED_HOST = True
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
-DEBUG = False
-
 PREFIX = '/aartfaac'
 
 FORCE_SCRIPT_NAME = PREFIX
@@ -14,4 +12,4 @@ MEDIA_URL = PREFIX + '/media/'
 LOGIN_URL = PREFIX + '/accounts/login/'
 LOGIN_REDIRECT_URL = PREFIX + '/'
 
-ALLOWED_HOSTS = ['proxy.lofar.eu']
+ALLOWED_HOSTS = ['proxy.lofar.eu', 'aartfaac.org', 'www.aartfaac.org']

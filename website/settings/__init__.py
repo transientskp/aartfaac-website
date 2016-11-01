@@ -10,22 +10,15 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.10/ref/settings/
 """
 
-from os import path
+from os import path, environ
 
-# Build paths inside the project like this: path.join(BASE_DIR, ...)
 BASE_DIR = path.dirname(path.dirname(path.dirname(path.abspath(__file__))))
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
+SECRET_KEY = environ.get('SECRET_KEY', 'change me using SECRET_KEY env var')
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'm0kxq=x50ylx__f++sgzz1g_rf@yl1n8f8=%gyly(v*o#%+2-9'
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = environ.get('DEBUG', 'false').lower() == "true"
 
 ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -137,3 +130,14 @@ MEDIA_ROOT = path.join(BASE_DIR, 'media')
 INTERNAL_IPS = ['127.0.0.1']
 
 LOGIN_REDIRECT_URL = '/'
+
+YOUTUBE_BASE = 'rtmp://a.rtmp.youtube.com/live2'
+YOUTUBE_KEY = environ.get('YOUTUBE_KEY', 'change me using YOUTUBE_KEY env var')
+YOUTUBE_URL = '{}/{}'.format(YOUTUBE_BASE, YOUTUBE_KEY)
+
+print()
+print("Django settings:")
+print("* SECRET_KEY: {}".format(SECRET_KEY))
+print("* YOUTUBE_KEY: {}".format(YOUTUBE_KEY))
+print("* DEBUG: {}".format(DEBUG))
+print()
