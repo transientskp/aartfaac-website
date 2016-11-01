@@ -1,5 +1,4 @@
-aartfaac-arthur>=0.1,<0.3
+aartfaac-arthur>=0.2,<0.3
 django>=1.10,<1.11
 gunicorn>=19.6,<19.7
 django-debug-toolbar>=1.6,<1.7
-psycopg2
